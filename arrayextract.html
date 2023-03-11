@@ -10,23 +10,32 @@
     const exampleArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     function arrayExtract(array, start, length) {
-        const extractedArray = [];
+    const extractedArray = [];
+
         if (typeof array === 'undefined' || typeof start === 'undefined' || typeof length === 'undefined') {
-        return [];}
+            return [];
+        }
+
         // start negativ oder positiv?
-        if (start < 0){
-            start = array.length + start;}
-        
-            // länge kürzer, länger oder passende länge array? immer so weit es geht ausfüllen
-        if (start + length > array.length){
+        if (start < 0 && length > start) {
+            start = array.length + start;
+        } else if (start <0 && length <= start){
+            start = 0;
+        }
+
+        // länge kürzer, länger oder passende länge array? immer so weit es geht ausfüllen
+        if (start + length > array.length) {
             length = array.length - start;
         } else if (start + length < 0) {
             return [];
+        }
+
         // von welcher bis welcher indexnummer?
-        } else {for (let i = start; i < start + length; i++){
+        for (let i = start; i < start + length; i++) {
             extractedArray.push(array[i]);
         }
-        return extractedArray;}
+
+        return extractedArray;
     }
 
     console.log( arrayExtract(exampleArray, 1, 4)) // [2, 3, 4, 5]
