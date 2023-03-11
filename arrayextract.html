@@ -7,6 +7,57 @@
 <body>
 <script>
     // TODO: Your JavaScript implementation for array extraction goes here.
+    const exampleArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    function arrayExtract(array, start, length) {
+        const extractedArray = [];
+        if (typeof array === 'undefined' || typeof start === 'undefined' || typeof length === 'undefined') {
+        return [];}
+        // start negativ oder positiv?
+        if (start < 0){
+            start = array.length + start;}
+        
+            // länge kürzer, länger oder passende länge array? immer so weit es geht ausfüllen
+        if (start + length > array.length){
+            length = array.length - start;
+        } else if (start + length < 0) {
+            return [];
+        // von welcher bis welcher indexnummer?
+        } else {for (let i = start; i < start + length; i++){
+            extractedArray.push(array[i]);
+        }
+        return extractedArray;}
+    }
+
+    console.log( arrayExtract(exampleArray, 1, 4)) // [2, 3, 4, 5]
+    console.log(arrayExtract(exampleArray, 1, 10)) // [2, 3, 4, 5, 6, 7, 8, 9, 10]
+    console.log( arrayExtract(exampleArray, 12, 2)) // []
+    console.log(arrayExtract(exampleArray, -5, 3)) // [6, 7, 8]
+    console.log(arrayExtract(exampleArray, -11, 2)) // [1]
+    console.log(arrayExtract(exampleArray, -13, 2)) // []
+    console.log(arrayExtract()) // []
+    console.log(arrayExtract(exampleArray)) // []
+    console.log(arrayExtract(exampleArray, 0)) // []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
