@@ -9,54 +9,53 @@
 <script>
     // TODO: Your JavaScript implementation for temperature conversion goes here.
     function convertTemperature(temperature, fromUnit, toUnit) {
-    if (fromUnit == "celsius"){
-        fromCelsiusToUnit(temperature, toUnit);
-    } else if (fromUnit == "kelvin"){
-        fromKelvinToUnit(temperature, toUnit);
-    } else if (fromUnit == "fahrenheit"){
-        fromFahrenheitToUnit(temperature, toUnit);
+    let result;
+    if (fromUnit == "celsius") {
+        result = fromCelsiusToUnit(temperature, toUnit);
+    } else if (fromUnit == "kelvin") {
+        result = fromKelvinToUnit(temperature, toUnit);
+    } else if (fromUnit == "fahrenheit") {
+        result = fromFahrenheitToUnit(temperature, toUnit);
     } else {
         console.log("Invalid fromUnit :(");
+        return;
     }
+    if (result === undefined) {
+        console.log("Invalid toUnit :(");
+    } else {
+        return result;
     }
-     
-    function fromCelsiusToUnit(temperature, toUnit){
-        if (toUnit == "kelvin"){
-            let result = temperature + 273.15;
-            return result;
-        } else if (toUnit == "fahrenheit"){
-            let result = (temperature *9/5) +32;
-            return result;
-        } else{
-            console.log("invalid argument: toUnit")
-        }
-        
-    }
+}
 
-    function fromKelvinToUnit(temperature, toUnit){
-        if (toUnit == "celsius"){
-            let result = temperature -273.15;
-            return result;
-        } else if (toUnit == "fahrenheit"){
-            let result = (temperature - 273.15)* 9/5 + 32;
-            return result;
-        } else {
-            console.log("invalid argument: toUnit")
-        }
+function fromCelsiusToUnit(temperature, toUnit) {
+    if (toUnit == "kelvin") {
+        return temperature + 273.15;
+    } else if (toUnit == "fahrenheit") {
+        return temperature * 9 / 5 + 32;
+    } else {
+        return;
     }
-        
-    function fromFahrenheitToUnit(temperature, toUnit){
-        if(toUnit == "celsius"){
-            let result = (temperature - 32) * 5/9;
-            return result;
-        } else if (toUnit == "kelvin"){
-            let result = (temperature - 32) * 5/9 + 273.15;
-            return result;
-        } else {
-            console.log("invalid argument: toUnit")
-        }
-    }
+}
 
+function fromKelvinToUnit(temperature, toUnit) {
+    if (toUnit == "celsius") {
+        return temperature - 273.15;
+    } else if (toUnit == "fahrenheit") {
+        return (temperature - 273.15) * 9 / 5 + 32;
+    } else {
+        return;
+    }
+}
+
+function fromFahrenheitToUnit(temperature, toUnit) {
+    if (toUnit == "celsius") {
+        return (temperature - 32) * 5 / 9;
+    } else if (toUnit == "kelvin") {
+        return (temperature - 32) * 5 / 9 + 273.15;
+    } else {
+        return;
+    }
+}
     
 
 
