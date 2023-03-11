@@ -10,6 +10,9 @@
     // TODO: Your JavaScript implementation for temperature conversion goes here.
     function convertTemperature(temperature, fromUnit, toUnit) {
     let result;
+    if (fromUnit === toUnit){
+        result = temperature
+    }
     if (fromUnit == "celsius") {
         result = fromCelsiusToUnit(temperature, toUnit);
     } else if (fromUnit == "kelvin") {
